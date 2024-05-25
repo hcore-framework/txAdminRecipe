@@ -1,0 +1,51 @@
+name: HCore Framework
+version: v0.0.1
+author: HarryPrado
+$onesync: 'on'
+$engine: 3
+$minFxVersion: 8216
+tasks:
+  # Base Files
+  - action: download_github
+    src: https://github.com/hcore-framework/txAdminRecipe
+    ref: main
+    dest: ./tmp/hcore
+  # Standalone
+  - action: download_github
+    src: 'https://github.com/citizenfx/cfx-server-data'
+    ref: master
+    subpath: resources
+    dest: './resources/[cfx-default]'
+  - action: download_file
+    path: ./tmp/files/oxmysql.zip
+    url: >-
+      https://github.com/overextended/oxmysql/releases/download/v2.10.1/oxmysql.zip
+  - action: unzip
+    dest: './resources/[standalone]'
+    src: ./tmp/files/oxmysql.zip
+  - action: download_file
+    path: ./tmp/files/ox_lib.zip
+    url: >-
+      https://github.com/overextended/ox_lib/releases/download/v3.22.1/ox_lib.zip
+  - action: unzip
+    dest: './resources/[standalone]'
+    src: ./tmp/files/ox_lib.zip
+  - action: download_file
+    path: ./tmp/files/ox_target.zip
+    url: >-
+      https://github.com/overextended/ox_target/releases/download/v1.15.3/ox_target.zip
+  - action: unzip
+    dest: './resources/[standalone]'
+    src: ./tmp/files/ox_target.zip
+  - action: download_github
+    ref: master
+    src: 'https://github.com/citizenfx/screenshot-basic'
+    dest: './resources/[standalone]/screenshot-basic'
+  - action: download_github
+    ref: main
+    src: 'https://github.com/AvarianKnight/pma-voice'
+    dest: './resources/[voice]/pma-voice'
+  # Clean up
+  - action: remove_path
+    path: ./tmp
+
