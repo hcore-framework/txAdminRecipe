@@ -16,6 +16,9 @@ tasks:
   - action: move_path
     src: ./tmp/hcore/svLogo.png
     dest: ./svLogo.png
+  - action: move_path
+    src: ./tmp/hcore/INSTALLER.md
+    dest: ./README.md
 
   # Prepare Database
   - action: connect_database
@@ -28,6 +31,7 @@ tasks:
     ref: master
     subpath: resources
     dest: './resources/[cfx-default]'
+
   - action: download_file
     path: ./tmp/files/oxmysql.zip
     url: >-
@@ -35,6 +39,7 @@ tasks:
   - action: unzip
     dest: './resources/[standalone]'
     src: ./tmp/files/oxmysql.zip
+
   - action: download_file
     path: ./tmp/files/ox_lib.zip
     url: >-
@@ -42,6 +47,7 @@ tasks:
   - action: unzip
     dest: './resources/[standalone]'
     src: ./tmp/files/ox_lib.zip
+
   - action: download_file
     path: ./tmp/files/ox_target.zip
     url: >-
@@ -49,14 +55,17 @@ tasks:
   - action: unzip
     dest: './resources/[standalone]'
     src: ./tmp/files/ox_target.zip
+
   - action: download_github
     ref: master
     src: 'https://github.com/citizenfx/screenshot-basic'
     dest: './resources/[standalone]/screenshot-basic'
+
   - action: download_github
     ref: main
     src: 'https://github.com/AvarianKnight/pma-voice'
     dest: './resources/[voice]/pma-voice'
+
   # Clean up
   
   - action: remove_path
